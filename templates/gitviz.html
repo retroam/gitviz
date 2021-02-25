@@ -116,18 +116,21 @@
                     <div class="row">
                         <!-- Issues per Month -->
                         <div class="col-xl-8 col-lg-7">
-                        <div class="card shadow mb-4">
-                            <div class="card-header py-3">
-                                <h6 class="m-0 font-weight-bold text-primary">
-                                    Issues per month
-                                </h6>
-                            </div>
-                            <div class="card-body">
-                                <div class="chart-area">
-                                    <canvas id="issueChart"></canvas>
+
+                            <div class="card shadow mb-4">
+                                <div class="card-header py-3">
+                                    <h6 class="m-0 font-weight-bold text-primary">
+                                        Issues per month
+                                    </h6>
+                                </div>
+                                <div class="card-body">
+                                    <div class="chart-area">
+                                        <canvas id="issueChart"></canvas>
+                                    </div>
                                 </div>
                             </div>
                         </div>
+                    
 
                         </div>
                     </div>
@@ -138,6 +141,18 @@
                 </div>
             </div>
         </div>
+        <script type="text/javascript">
+        // issueChart
+        var ctx = document.getElementById("issueChart")
+        var issueChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ['a', 'b','c']
+            }
+        })
+        
+        </script>
     </body>
+
    
 </html>
