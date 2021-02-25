@@ -13,4 +13,7 @@ async def root():
 
 @app.get("/{repo}", response_class=HTMLResponse)
 async def get_repo(request: Request, repo: str):
-    return templates.TemplateResponse("gitviz.html", {"request": request, "repo":repo})
+    dsh_closed_issues = 4000
+    return templates.TemplateResponse("gitviz.html", {"request": request,
+                                                         "repo":repo,
+                                                         "dsh_closed_issues":dsh_closed_issues})
