@@ -116,28 +116,134 @@
                     <div class="row">
                         <!-- Issues per Month -->
                         <div class="col-xl-8 col-lg-7">
-                        <div class="card shadow mb-4">
-                            <div class="card-header py-3">
-                                <h6 class="m-0 font-weight-bold text-primary">
-                                    Issues per month
-                                </h6>
-                            </div>
-                            <div class="card-body">
-                                <div class="chart-area">
-                                    <canvas id="issueChart"></canvas>
+
+                            <div class="card shadow mb-4">
+                                <div class="card-header py-3">
+                                    <h6 class="m-0 font-weight-bold text-primary">
+                                        Issues per month
+                                    </h6>
+                                </div>
+                                <div class="card-body">
+                                    <div class="chart-area">
+                                        <canvas id="issueChart"></canvas>
+                                    </div>
                                 </div>
                             </div>
                         </div>
 
+                        <!-- Popular contributers-->
+                        <div class="col-xl-4 col-lg-5">
+                            <div class="card shadow mb-4">
+                                <div class="card-header py-3">
+                                    <h6 class="m-0 font-weight-bold text-primary">
+                                        Popular contributers
+                                    </h6>
+                                </div>
+                                <div class="card-body">
+                                    <div class="chart-pie pt-4 pb-2">
+                                        <canvas id="contribChart"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                        
+
                         </div>
+            
                     </div>
 
+                    <!--Topic modelling -->
+                    <div class="row">
+                        <div class="col-xl-13 col-lg-13 clearfix visible-xs">
+                            <div class="card shadow mb-4">
+                                <div class="card-header py-3">
+                                    <h6 class="m-0 font-weight-bold text-primary">
+                                        Topic Modeling
+                                    </h6>
+                                </div>
+                                <div class="card-body">
+                        
+                                {% include 'lda.html' %}
+                
+                                </div>
+                            </div>
+                        
 
+                        </div>
+                    </div>
                     </div>
 
                 </div>
             </div>
         </div>
+        <script type="text/javascript">
+        // issueChart
+        var ctx = document.getElementById("issueChart")
+        var issueChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+    labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+    datasets: [{
+      label: "Earnings",
+      lineTension: 0.3,
+      backgroundColor: "rgba(78, 115, 223, 0.05)",
+      borderColor: "rgba(78, 115, 223, 1)",
+      pointRadius: 3,
+      pointBackgroundColor: "rgba(78, 115, 223, 1)",
+      pointBorderColor: "rgba(78, 115, 223, 1)",
+      pointHoverRadius: 3,
+      pointHoverBackgroundColor: "rgba(78, 115, 223, 1)",
+      pointHoverBorderColor: "rgba(78, 115, 223, 1)",
+      pointHitRadius: 10,
+      pointBorderWidth: 2,
+      data: [0, 10000, 5000, 15000, 10000, 20000, 15000, 25000, 20000, 30000, 25000, 40000],
+    }],
+  },
+  options: {
+    maintainAspectRatio: false,
+    layout: {
+      padding: {
+        left: 10,
+        right: 25,
+        top: 25,
+        bottom: 0
+      }
+    }
+},
+        })
+
+        var ctx2 = document.getElementById("contribChart");
+var myPieChart = new Chart(ctx2, {
+  type: 'doughnut',
+  data: {
+    labels: ["Direct", "Referral", "Social"],
+    datasets: [{
+      data: [55, 30, 15],
+      backgroundColor: ['#4e73df', '#1cc88a', '#36b9cc'],
+      hoverBackgroundColor: ['#2e59d9', '#17a673', '#2c9faf'],
+      hoverBorderColor: "rgba(234, 236, 244, 1)",
+    }],
+  },
+  options: {
+    maintainAspectRatio: false,
+    tooltips: {
+      backgroundColor: "rgb(255,255,255)",
+      bodyFontColor: "#858796",
+      borderColor: '#dddfeb',
+      borderWidth: 1,
+      xPadding: 15,
+      yPadding: 15,
+      displayColors: false,
+      caretPadding: 10,
+    },
+    legend: {
+      display: false
+    },
+    cutoutPercentage: 80,
+  },
+});
+        
+        </script>
     </body>
+
    
 </html>
