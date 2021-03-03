@@ -19,9 +19,8 @@ auth = (username, access_token)
 async def root(request: Request):
     return templates.TemplateResponse("welcome.html", {"request": request})
 
-@app.get("/{repo}", response_class=HTMLResponse)
+@app.get("/analysis/", response_class=HTMLResponse)
 async def get_repo(request: Request, repo: str):
-    repo = 'airbnb/knowledge-repo'
     data = get_data(repo, auth)
     dsh_open_issues, dsh_closed_issues, dsh_closed_rate,dsh_contrib = get_dashboard_stats(data)
     return templates.TemplateResponse("gitviz.html", {"request": request,
