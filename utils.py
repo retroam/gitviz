@@ -9,7 +9,7 @@ def get_data(repo, auth, state='all'):
     Function for downloading issues data from GitHub
     """
     requests.adapters.DEFAULT_RETRIES = 5
-    repos = 'airbnb/knowledge-repo'
+ 
     url = 'https://api.github.com/repos/{}/issues?state={}'.format(repo, state)
     results = []
     r = requests.get(url, auth=auth)
