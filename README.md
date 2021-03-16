@@ -25,3 +25,5 @@ username=abc1234
 ```
 uvicorn app:app --port=8888
 ```
+**Note**
+Has only been tested on python 3.7+
