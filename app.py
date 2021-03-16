@@ -12,7 +12,7 @@ templates = Jinja2Templates(directory="templates")
 config = configparser.ConfigParser()
 config.read('.config')
 access_token = config.get("GITHUB", "token")
-username = 'retroam'
+username = config.get("GITHUB", "username")
 auth = (username, access_token)
 
 @app.get("/", response_class=HTMLResponse)
