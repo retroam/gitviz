@@ -37,6 +37,15 @@ def get_data(repo, auth, state="all"):
     )
     return output
 
+def get_group(data, field, limit=None, sort=False):
+    data['month'] = pd.to_datetime(data.created_at).dt.strftime('%Y-%m')
+    grp = data.groupby(field).id.count()
+    if sort:
+        grp = grp.sort_values(ascending=False)
+    if limit:
+        grp = grp.head(limit)
+  
+    return list(grp.values),list(grp.index)
 
 def get_dashboard_stats(df):
     count_stats = df.state.value_counts().to_dict()
