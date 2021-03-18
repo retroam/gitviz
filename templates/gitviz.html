@@ -136,7 +136,7 @@
                             <div class="card shadow mb-4">
                                 <div class="card-header py-3">
                                     <h6 class="m-0 font-weight-bold text-primary">
-                                        Popular contributers
+                                        Popular contributors
                                     </h6>
                                 </div>
                                 <div class="card-body">
@@ -151,25 +151,7 @@
             
                     </div>
 
-                    <!--Topic modelling -->
-                    <div class="row">
-                        <div class="col-xl-13 col-lg-13 clearfix visible-xs">
-                            <div class="card shadow mb-4">
-                                <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary">
-                                        Topic Modeling
-                                    </h6>
-                                </div>
-                                <div class="card-body">
-                        
-                                {% include 'lda.html' %}
-                
-                                </div>
-                            </div>
-                        
-
-                        </div>
-                    </div>
+              
                     </div>
 
                 </div>
@@ -181,9 +163,9 @@
         var issueChart = new Chart(ctx, {
             type: 'line',
             data: {
-    labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+    labels: {{issues_labels | safe}},
     datasets: [{
-      label: "Earnings",
+      label: "Issues",
       lineTension: 0.3,
       backgroundColor: "rgba(78, 115, 223, 0.05)",
       borderColor: "rgba(78, 115, 223, 1)",
@@ -195,7 +177,7 @@
       pointHoverBorderColor: "rgba(78, 115, 223, 1)",
       pointHitRadius: 10,
       pointBorderWidth: 2,
-      data: [0, 10000, 5000, 15000, 10000, 20000, 15000, 25000, 20000, 30000, 25000, 40000],
+      data: {{issues_data | safe}},
     }],
   },
   options: {
@@ -215,9 +197,9 @@
 var myPieChart = new Chart(ctx2, {
   type: 'doughnut',
   data: {
-    labels: ["Direct", "Referral", "Social"],
+    labels: {{contrib_labels | safe}},
     datasets: [{
-      data: [55, 30, 15],
+      data: {{contrib_data | safe}},
       backgroundColor: ['#4e73df', '#1cc88a', '#36b9cc'],
       hoverBackgroundColor: ['#2e59d9', '#17a673', '#2c9faf'],
       hoverBorderColor: "rgba(234, 236, 244, 1)",
