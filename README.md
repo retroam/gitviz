@@ -25,5 +25,6 @@ username=abc1234
 ```
 uvicorn app:app --port=8888
 ```
+7. Enter a public github repo e.g. airbnb/knowledge-repo
 **Note**
 Has only been tested on python 3.7+
